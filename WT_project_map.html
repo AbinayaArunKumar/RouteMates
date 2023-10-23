@@ -1,0 +1,84 @@
+<html>
+<head>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+	  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+	 <style>
+	    body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+			            background: radial-gradient(circle, #ff0000, #0000ff);
+
+        }
+
+        #map {
+            border-radius: 20px; /* Rounded edges */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a cute effect */
+            height: 80vh;
+            width: 80vw;
+        }
+	  </style>
+</head>
+
+<body>
+ <div id="map"></div>
+</body>
+<script>
+<!-- initializing a map-->
+var map = L.map('map');
+map.setView([51.505, -0.09],10);
+
+
+<!-- adding actual map tile from OpenStreetMap-->
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+<!-- live user location-->
+navigator.geolocation.watchPosition(suc,err);
+let marker,circle,zoom;
+function suc(p){
+	const lat=p.coords.latitude;
+	const lon=p.coords.longitude;
+	const accuracy=p.coords.accuracy;
+	if(marker){
+	map.removeLayer(marker);
+	map.removeLayer(circle);
+	}
+
+	marker= L.marker([lat, lon]).addTo(map);
+	circle= L.circle([lat, lon],{ radius:accuracy }).addTo(map);
+	
+	if (!zoom){
+	zoom=map.fitBounds(circle.getBounds());
+	}
+	
+	<!-- for map to follow the marker-->
+	map.setView([lat,lon]);
+	
+	
+}
+
+function err(err){
+	if(err.code==1){
+		alert("Please allow geolocation access");
+	}
+	else{
+		alert("Cannot get current location");}}
+
+
+
+
+</script>
+
+
+
+</html>
