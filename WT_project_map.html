@@ -7,28 +7,37 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
 	 <style>
-	    body {
+	   body {
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
             align-items: center;
             height: 100vh;
-			            background: radial-gradient(circle, #ff0000, #0000ff);
+            background: radial-gradient(rgba(0, 0, 0),rgba(69, 3, 100))
+        }
 
+        #map-container {
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            height: 80vh; 
+            width: 80vh; 
+            margin-left: 10vh; 
         }
 
         #map {
-            border-radius: 20px; /* Rounded edges */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a cute effect */
-            height: 80vh;
-            width: 80vw;
+		border-radius: 20px;
+            height: 100%;
+            width: 100%;
+			           
+
         }
 	  </style>
 </head>
 
 <body>
- <div id="map"></div>
+ <div id="map-container">
+        <div id="map"></div>
+    </div>
 </body>
 <script>
 <!-- initializing a map-->
@@ -74,11 +83,5 @@ function err(err){
 	else{
 		alert("Cannot get current location");}}
 
-
-
-
 </script>
-
-
-
 </html>
