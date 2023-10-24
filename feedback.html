@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Feedback Form</title>
@@ -9,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 67vh;
+            height:67vh;
             margin: 0;
         }
 
@@ -17,82 +18,40 @@
             text-align: center;
             color: #fff;
             font-size: 24px;
-		
-			
         }
 
         .container {
-			
             width: 900px;
             padding: 0;
-            border: 0 ;
+            border: 0;
             border-radius: 5px;
             background: #fff;
-			
         }
 
-        
         .highlighted-header {
-			
-            background-color: #571B7E; 
+            background-color: #571B7E;
             color: #fff;
             padding: 0.5px;
             text-align: center;
             border-radius: 5px 5px 0 0;
-			margin-top:0;
-			margin-bottom:10px;
+            margin-top: 0;
+            margin-bottom: 10px;
         }
-		label {
+
+        label {
             display: block;
-			margin-left:10px
+            margin-left: 10px;
         }
 
         input[type="text"],
         input[type="email"],
-        select {
+        select,
+        textarea { /* Add textarea styling */
             width: 90%;
             padding: 10px;
-			margin-left:10px;
-			margin-top:10px;
-			margin-bottom:10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .rating {
-            display: flex;
-            justify-content: center;
-        }
-
-        .rating input {
-            display: none;
-        }
-
-        .rating label {
-            font-size: 30px;
-            cursor: pointer;
-        }
-
-        .rating label:before {
-            content: '\2606';
-            color: #ddd;
-        }
-
-        .rating input:checked ~ label:before {
-            content: '\2605';
-            color: #f1c40f;
-        }
-
-        label.suggestion-label {
+            margin-left: 10px;
             margin-top: 10px;
-        }
-
-        textarea {
-            width: 90%;
-            padding: 10px;
-			margin-left:10px;
-			margin-top:10px;
-			margin-bottom:10px;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -104,13 +63,11 @@
             padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
-			margin-left:10px;
+            margin-left: 10px;
         }
 
         .container {
-            padding-bottom:5px;
-			
-			
+            padding-bottom: 5px;
         }
     </style>
 </head>
@@ -119,48 +76,17 @@
         <div class="highlighted-header">
             <h1>Feedback</h1>
         </div>
-        <form action="#" method="post" onsubmit="showAlert()">
-            <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-
-            <div class="form-group">
-                <label for "email">Email *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label>Rate Our Services *</label>
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" />
-                    <label for="star5"></label>
-                    <input type="radio" id="star4" name="rating" value="4" />
-                    <label for="star4"></label>
-                    <input type="radio" id="star3" name="rating" value="3" />
-                    <label for="star3"></label>
-                    <input type="radio" id="star2" name="rating" value="2" />
-                    <label for="star2"></label>
-                    <input type="radio" id="star1" name="rating" value="1" />
-                    <label for="star1"></label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="suggestion-label" for="suggestions">Enter Your Suggestions</label>
-                <textarea id="suggestions" name="suggestions" rows="4"></textarea>
-            </div>
-
-            <div class="form-group">
-                <button type="submit">Submit</button>
-            </div>
+        <form method = "post" action = "" name = "contact-form">
+				<input type="text" name="name" placeholder="Name" required>
+				<input type="email"  name="your-email"  placeholder="Email" required>
+				<textarea  name="experience" rows="4" placeholder="How was your experience with us"required></textarea>
+				<textarea  name="suggestions" rows="4" placeholder="Your suggestions"></textarea>
+				<button type="submit">Submit</button>
+            
         </form>
     </div>
-	<script>
-        function showAlert() {
-            alert("Response submitted");
-        }
-    </script>
+    <script src = "Google Sheet.js"></script>
 </body>
 </html>
+
 
